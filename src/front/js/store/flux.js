@@ -23,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						Throw('error')
 					}
 					const tokenJson = await token.json();
-					localStorage.setItem('token',tokenJson)
+					localStorage.setItem('token',tokenJson.access_token)
 					
 					
 				} catch {
@@ -34,12 +34,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getUser: async () => {
 				const token = localStorage.getItem('token');
 				try {
-					const user = await fetch(`${process.env.BACKEND_URL}/api/user`,
+					const user = await fetch(`${process.env.BACKEND_URL}api/user`,
 						{
 							method: 'GET',
 							headers: {
 								'Content-Type': 'application/json',
-								'Authoritation': 'Bearer ${token}'
+								'Authorization': `Bearer ${token}`
 							}
 						}
 					)

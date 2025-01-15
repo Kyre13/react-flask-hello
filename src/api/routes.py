@@ -55,7 +55,7 @@ def handle_login():
     
     access_token = create_access_token(identity=user.email)
 
-    return jsonify ({'id': user.id, 'acces_token': access_token }), 200
+    return jsonify ({'id': user.id, 'access_token': access_token }), 200
     
 
 @api.route('/user',methods=['GET'])
